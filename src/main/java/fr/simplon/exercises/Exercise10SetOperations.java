@@ -1,5 +1,7 @@
 package fr.simplon.exercises;
 
+import java.util.Arrays;
+
 /**
  * Exercice 10: Opérations sur les ensembles
  * 
@@ -14,8 +16,16 @@ public class Exercise10SetOperations {
      * @return true si la valeur est trouvée dans les length premiers éléments
      */
     public boolean contains(int[] array, int value) {
-        throw new UnsupportedOperationException();
-
+        /*if (Arrays.stream(array).anyMatch(value1 -> value1 == value)){
+            return true;
+        };
+        return false;*/
+        for (int i = 0 ; i < array.length ; i ++){
+            if (array[i] == value){
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -25,8 +35,25 @@ public class Exercise10SetOperations {
      * @return un tableau contenant tous les éléments uniques des deux tableaux
      */
     public int[] union(int[] array1, int[] array2) {
-        throw new UnsupportedOperationException();
-
+        int[] newTab = new int[array2.length+array1.length];
+        int index = 0;
+        for( int element : array1){
+            if ( !contains(newTab, element)){
+                newTab[index] = element;
+                index++;
+            }
+           }
+        for ( int element : array2){
+            if ( !contains(newTab, element)){
+                newTab[index] = element;
+                index++;
+            }
+        }
+        int[] newTabFinish = new int[index];
+        for (int x = 0; x < index ; x++) {
+            newTabFinish[x] = newTab[x];
+        }
+        return newTabFinish;
     }
 
     /**
@@ -36,8 +63,21 @@ public class Exercise10SetOperations {
      * @return un tableau contenant les éléments présents dans les deux tableaux
      */
     public int[] intersection(int[] array1, int[] array2) {
-        throw new UnsupportedOperationException();
-
+        int[] newTab = new int[array2.length+array1.length];
+        int index = 0;
+        for (int elementArray1 : array1){
+            for( int elementArray2 : array2){
+                if( elementArray1 == elementArray2) {
+                    newTab[index] = elementArray2;
+                    index ++;
+                }
+            }
+        }
+        int[] newTabFinish = new int[index];
+        for (int i = 0; i < newTabFinish.length ; i++) {
+            newTabFinish[i] = newTab[i];
+        }
+        return newTabFinish;
     }
     
     /**
@@ -47,8 +87,19 @@ public class Exercise10SetOperations {
      * @return un tableau contenant les éléments de array1 absents de array2
      */
     public int[] difference(int[] array1, int[] array2) {
-        throw new UnsupportedOperationException();
-
+        int index = 0;
+        int[] newTab = new int[array2.length+array1.length];
+        for (int i : array1){
+            if (!contains(array2, i)){
+                newTab[index] = i;
+                index ++;
+            }
+        }
+        int[] newTabFinish = new int[index];
+        for (int i = 0; i < index ; i++) {
+            newTabFinish[i] = newTab[i];
+        }
+        return newTabFinish;
     }
     
     /**
@@ -58,8 +109,25 @@ public class Exercise10SetOperations {
      * @return un tableau contenant les éléments présents dans un seul tableau
      */
     public int[] symmetricDifference(int[] array1, int[] array2) {
-        throw new UnsupportedOperationException();
-
+        int[] newTab = new int[array2.length+array1.length];
+        int index = 0;
+        for (int element : array1){
+            if( !contains(array2, element)){
+                newTab[index] = element;
+                index ++;
+            }
+        }
+        for (int element : array2){
+            if( !contains(array1, element)){
+                newTab[index] = element;
+                index ++;
+            }
+        }
+        int[] newTabFinish = new int[index];
+        for (int i = 0; i < index ; i++) {
+            newTabFinish[i] = newTab[i];
+        }
+        return newTabFinish;
     }
     
     /**
@@ -69,8 +137,17 @@ public class Exercise10SetOperations {
      * @return true si tous les éléments de array1 sont dans array2
      */
     public boolean isSubset(int[] array1, int[] array2) {
-        throw new UnsupportedOperationException();
-
+        boolean flag = true;
+        for (int i : array1){
+            if (contains(array2, i)){
+                flag =true;
+            }
+            else
+            {
+                flag = false;
+            }
+        }
+        return flag;
     }
     
     /**
@@ -79,7 +156,20 @@ public class Exercise10SetOperations {
      * @return un tableau contenant uniquement les éléments uniques
      */
     public int[] removeDuplicates(int[] array) {
-        throw new UnsupportedOperationException();
+        int index = 0;
+        int[] newTab = new int[array.length];
+        Arrays.sort(array);
+        for (int element : array){
+            if ( !contains(newTab, element)){
+                newTab[index] = element;
+                index ++;
+            }
+        }
+        int[] newTabFinish = new int[index];
+        for (int i = 0; i < index ; i++) {
+            newTabFinish[i] = newTab[i];
+        }
+        return newTabFinish;
 
     }
     
@@ -89,7 +179,16 @@ public class Exercise10SetOperations {
      * @return le nombre d'éléments uniques
      */
     public int countUnique(int[] array) {
-        throw new UnsupportedOperationException();
-
+        if (array == null || 0 == array.length){
+            return 0;
+        }
+        Arrays.sort(array);
+        int nbrUnique = 1;
+        for (int i = 0; i < array.length-1; i++) {
+            if ( array[i] != array[i+1] ){
+                nbrUnique++;
+            }
+        }
+        return nbrUnique;
     }
 }
