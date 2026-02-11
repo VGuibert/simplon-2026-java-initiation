@@ -14,8 +14,8 @@ public class Exercise11TwoDimensionalArrays {
      * @return une matrice rows x cols remplie de 0
      */
     public int[][] createMatrix(int rows, int cols) {
-        throw new UnsupportedOperationException();
-
+        int[][] newMatrix = new int[rows][cols];
+        return newMatrix;
     }
     
     /**
@@ -24,8 +24,13 @@ public class Exercise11TwoDimensionalArrays {
      * @return la somme de tous les éléments
      */
     public int sumMatrix(int[][] matrix) {
-        throw new UnsupportedOperationException();
-
+        int somme = 0;
+        for(int element[] : matrix){
+            for(int element2 : element){
+                somme += element2;
+            }
+        }
+        return somme;
     }
     
     /**
@@ -34,7 +39,15 @@ public class Exercise11TwoDimensionalArrays {
      * @return la valeur maximale
      */
     public int findMaxInMatrix(int[][] matrix) {
-        throw new UnsupportedOperationException();
+        int max = matrix[0][0];
+        for(int element[] : matrix){
+            for(int element2 : element){
+                if ( element2>max ){
+                    max = element2;
+                }
+            }
+        }
+        return max;
 
     }
     
@@ -44,8 +57,13 @@ public class Exercise11TwoDimensionalArrays {
      * @return la matrice transposée
      */
     public int[][] transpose(int[][] matrix) {
-        throw new UnsupportedOperationException();
-
+        int[][] maxtrixTranspose = new int[matrix[0].length][matrix.length];
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                maxtrixTranspose[j][i] = matrix[i][j];
+            }
+        }
+        return maxtrixTranspose;
     }
     
     /**
@@ -54,8 +72,11 @@ public class Exercise11TwoDimensionalArrays {
      * @return un tableau contenant les éléments de la diagonale
      */
     public int[] getDiagonal(int[][] matrix) {
-        throw new UnsupportedOperationException();
-
+        int[] elementContantDiagonal = new int[matrix.length];
+        for (int i = 0; i < matrix.length; i++) {
+            elementContantDiagonal[i] = matrix[i][i];
+        }
+        return elementContantDiagonal;
     }
     
 }
