@@ -1,5 +1,7 @@
 package fr.simplon.exercises;
 
+import java.util.Arrays;
+
 /**
  * Exercice 5: Tableaux - Opérations de base
  * 
@@ -13,8 +15,13 @@ public class Exercise05ArraysBasics {
      * @return un tableau [1, 2, 3, ..., n]
      */
     public int[] createSequence(int n) {
-        throw new UnsupportedOperationException();
 
+        int[] monTableau = new int[n];
+
+        for (int i = 0; i < monTableau.length; i++) {
+            monTableau[i] = 1+i;
+        }
+        return monTableau;
     }
     
     /**
@@ -23,8 +30,7 @@ public class Exercise05ArraysBasics {
      * @return le premier élément
      */
     public int getFirstElement(int[] array) {
-        throw new UnsupportedOperationException();
-
+        return array[0];
     }
     
     /**
@@ -33,8 +39,8 @@ public class Exercise05ArraysBasics {
      * @return le dernier élément
      */
     public int getLastElement(int[] array) {
-        throw new UnsupportedOperationException();
-
+        int lastElement = array.length;
+        return array[lastElement-1];
     }
     
     /**
@@ -44,8 +50,13 @@ public class Exercise05ArraysBasics {
      * @return le nombre d'occurrences
      */
     public int countOccurrences(int[] array, int value) {
-        throw new UnsupportedOperationException();
-
+        int countOccurrences = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == value) {
+                countOccurrences++;
+            }
+        }
+        return countOccurrences;
     }
     
     /**
@@ -55,7 +66,13 @@ public class Exercise05ArraysBasics {
      * @return true si la valeur est présente, false sinon
      */
     public boolean contains(int[] array, int value) {
-        throw new UnsupportedOperationException();
 
+        boolean valueIsPresent = false;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == value) {
+                valueIsPresent = true;
+            }
+        }
+        return valueIsPresent;
     }
 }
