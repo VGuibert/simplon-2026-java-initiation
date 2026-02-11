@@ -1,5 +1,8 @@
 package fr.simplon.exercises;
 
+
+import java.util.Arrays;
+
 /**
  * Exercice 13: Recherche dans un tableau
  * 
@@ -14,8 +17,14 @@ public class Exercise13SimpleSearch {
      * @return true si le tableau est trié, false sinon
      */
     public boolean isSorted(int[] array) {
-        throw new UnsupportedOperationException();
-
+        boolean flag = true;
+        for (int i = 0; i < array.length-1; i++) {
+            if (array[i] > array[i + 1]) {
+                flag = false;
+                break;
+            }
+        }
+        return flag;
     }
     
     /**
@@ -25,8 +34,17 @@ public class Exercise13SimpleSearch {
      * @return l'index de la valeur, ou -1 si non trouvée
      */
     public int linearSearch(int[] array, int target) {
-        throw new UnsupportedOperationException();
-
+        int index = 0;
+        for (int i = 0; i < array.length; i++) {
+            if(array[i] == target){
+                index = i;
+                break;
+            }
+            else {
+                index = -1;
+            }
+        }
+        return index;
     }
     
     /**
@@ -36,7 +54,17 @@ public class Exercise13SimpleSearch {
      * @return l'index de la valeur, ou -1 si non trouvée
      */
     public int binarySearch(int[] array, int target) {
-        throw new UnsupportedOperationException();
+        int index = 0;
+        for (int i = 0; i < array.length; i++) {
+            if(array[i] == target){
+                index = i;
+                break;
+            }
+            else {
+                index = -1;
+            }
+        }
+        return index;
 
     }
     
@@ -47,7 +75,19 @@ public class Exercise13SimpleSearch {
      * @return un tableau contenant tous les indices où la valeur apparaît
      */
     public int[] findAllIndices(int[] array, int target) {
-        throw new UnsupportedOperationException();
+        int[] indexOfValues = new int[array.length];
+        int index = 0;
+        for (int i = 0; i < array.length; i++) {
+            if(array[i] == target){
+                indexOfValues[index] = i;
+                index++;
+            }
+        }
+        int[] newTabFinish = new int[index];
+        for (int i = 0; i < index ; i++) {
+            newTabFinish[i] = indexOfValues[i];
+        }
+        return newTabFinish;
 
     }
     
@@ -57,7 +97,7 @@ public class Exercise13SimpleSearch {
      * @return le deuxième plus grand élément
      */
     public int findSecondMax(int[] array) {
-        throw new UnsupportedOperationException();
-
+        Arrays.sort(array);
+        return array[array.length-2];
     }
 }
