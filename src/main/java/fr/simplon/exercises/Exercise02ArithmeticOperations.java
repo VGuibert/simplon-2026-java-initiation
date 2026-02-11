@@ -14,7 +14,7 @@ public class Exercise02ArithmeticOperations {
      * @return la somme de a et b
      */
     public int add(int a, int b) {
-        throw new UnsupportedOperationException();
+        return a+b;
     }
     
     /**
@@ -23,8 +23,10 @@ public class Exercise02ArithmeticOperations {
      * @param b second nombre
      * @return la différence entre a et b
      */
+
+
     public int subtract(int a, int b) {
-        throw new UnsupportedOperationException();
+       return a-b;
 
     }
     
@@ -35,7 +37,7 @@ public class Exercise02ArithmeticOperations {
      * @return le produit de a et b
      */
     public int multiply(int a, int b) {
-        throw new UnsupportedOperationException();
+       return a*b;
 
     }
     
@@ -46,7 +48,7 @@ public class Exercise02ArithmeticOperations {
      * @return le quotient de a divisé par b
      */
     public int divide(int a, int b) {
-        throw new UnsupportedOperationException();
+        return a/b;
 
     }
     
@@ -57,7 +59,7 @@ public class Exercise02ArithmeticOperations {
      * @return le reste de a divisé par b
      */
     public int modulo(int a, int b) {
-        throw new UnsupportedOperationException();
+       return a%b;
 
     }
 }
