@@ -1,5 +1,7 @@
 package fr.simplon.exercises;
 
+import java.util.Arrays;
+
 /**
  * Exercice 12: Comparaison et échange d'éléments
  * 
@@ -14,8 +16,10 @@ public class Exercise12SwappingElements {
      * @param j second index
      */
     public int[] swap(int[] array, int i, int j) {
-        throw new UnsupportedOperationException();
-
+        int temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+        return array;
     }
     
     /**
@@ -26,8 +30,10 @@ public class Exercise12SwappingElements {
      * @return le tableau modifié
      */
     public int[] shiftLeft(int[] array, int fromIndex, int toIndex) {
-        throw new UnsupportedOperationException();
-
+        for (int i = fromIndex; i > toIndex; i--) {
+            swap(array, i-1, i);
+        }
+        return array;
     }
     
     /**
@@ -38,7 +44,10 @@ public class Exercise12SwappingElements {
      * @return le tableau modifié
      */
     public int[] shiftRight(int[] array, int fromIndex, int toIndex) {
-        throw new UnsupportedOperationException();
+        for (int i = fromIndex; i < toIndex; i++) {
+            swap(array, i+1, i);
+        }
+        return array;
 
     }
     
@@ -48,8 +57,16 @@ public class Exercise12SwappingElements {
      * @return le tableau modifié
      */
     public int[] moveSmallestToFront(int[] array) {
-        throw new UnsupportedOperationException();
-
+        int min = array[0];
+        int indexMin =0;
+        for (int index = 1 ; index < array.length ; index++){
+            if ( array[index] < min){
+                min = array[index];
+                indexMin = index;
+            }
+        }
+        shiftLeft(array , indexMin,0);
+        return array;
     }
     
     /**
@@ -58,8 +75,16 @@ public class Exercise12SwappingElements {
      * @return le tableau modifié
      */
     public int[] moveLargestToEnd(int[] array) {
-        throw new UnsupportedOperationException();
-
+        int index = 0;
+        int max = array[0];
+        for (int i = 1; i < array.length ; i++) {
+            if ( array[i] > max ) {
+                max = array[i];
+                index = i;
+            }
+        }
+        shiftRight(array , index, array.length-1);
+        return array;
     }
     
     /**
@@ -69,7 +94,12 @@ public class Exercise12SwappingElements {
      * @return true si array[i] <= array[i+1], false sinon
      */
     public boolean isInOrder(int[] array, int i) {
-        throw new UnsupportedOperationException();
+        if (array[i] <= array[i+1]){
+            return true;
+        }
+        else {
+            return false;
+        }
 
     }
     
@@ -80,8 +110,13 @@ public class Exercise12SwappingElements {
      * @return le tableau après une passe
      */
     public int[] bubblePass(int[] array) {
-        throw new UnsupportedOperationException();
-
+        for (int i = 0; i < array.length-1; i++) {
+            if(!isInOrder(array, i)){
+                swap(array,i+1,i);
+                i++;
+            }
+        }
+        return array;
     }
     
     /**
@@ -90,7 +125,12 @@ public class Exercise12SwappingElements {
      * @return le nombre de paires où array[i] > array[i+1]
      */
     public int countInversions(int[] array) {
-        throw new UnsupportedOperationException();
-
+        int count = 0;
+        for (int i = 0; i < array.length-1; i++) {
+            if(!isInOrder(array, i)){
+               count++;
+            }
+        }
+    return count;
     }
 }
