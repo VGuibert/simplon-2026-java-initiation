@@ -13,8 +13,17 @@ public class Exercise14BubbleSort {
      * @return le tableau trié (modifier le tableau en place)
      */
     public int[] bubbleSort(int[] array) {
-        throw new UnsupportedOperationException();
-
+        int temp;
+        for (int i = 0; i < array.length - 1; i++) {
+            for (int j = 0; j < array.length - i - 1; j++) {
+                if (array[j] > array[j + 1]) {
+                    temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                }
+            }
+        }
+        return array;
     }
     
     /**
@@ -23,8 +32,17 @@ public class Exercise14BubbleSort {
      * @return le tableau trié en ordre décroissant
      */
     public int[] bubbleSortDescending(int[] array) {
-        throw new UnsupportedOperationException();
-
+        int temp;
+        for (int i = 0; i < array.length - 1; i++) {
+            for (int j = 0; j < array.length - i - 1; j++) {
+                if (array[j] <= array[j + 1]) {
+                    temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                }
+            }
+        }
+        return array;
     }
     
     /**
@@ -33,8 +51,15 @@ public class Exercise14BubbleSort {
      * @return le nombre d'échanges effectués
      */
     public int countSwaps(int[] array) {
-        throw new UnsupportedOperationException();
-
+        int countSwap=0;
+        for (int i = 0; i < array.length - 1; i++) {
+            for (int j = 0; j < array.length - i - 1; j++) {
+                if (array[j] > array[j + 1]) {
+                    countSwap++;
+                }
+            }
+        }
+        return countSwap;
     }
     
     /**
@@ -44,7 +69,17 @@ public class Exercise14BubbleSort {
      * @return le tableau avec les k premiers éléments triés
      */
     public int[] partialBubbleSort(int[] array, int k) {
-        throw new UnsupportedOperationException();
+        int temp;
+        for (int i = 0; i < array.length - 1; i++) {
+            for (int j = 0; j < k; j++) {
+                if (array[j] > array[j + 1]) {
+                    temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                }
+            }
+        }
+        return array;
 
     }
 }
