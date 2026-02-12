@@ -13,8 +13,20 @@ public class Exercise15SelectionSort {
      * @return le tableau trié
      */
     public int[] selectionSort(int[] array) {
-        throw new UnsupportedOperationException();
-
+        for (int i = 0; i < array.length - 1; i++)
+        {
+            int index = i;
+            for (int j = i + 1; j < array.length; j++)
+            {
+                if (array[j] < array[index]){
+                    index = j;
+                }
+            }
+            int min = array[index];
+            array[index] = array[i];
+            array[i] = min;
+        }
+    return array;
     }
     
     /**
@@ -23,7 +35,20 @@ public class Exercise15SelectionSort {
      * @return le tableau trié en ordre décroissant
      */
     public int[] selectionSortDescending(int[] array) {
-        throw new UnsupportedOperationException();
+        for (int i = 0; i < array.length - 1; i++)
+        {
+            int index = i;
+            for (int j = i + 1; j < array.length; j++)
+            {
+                if (array[j] > array[index]){
+                    index = j;
+                }
+            }
+            int min = array[index];
+            array[index] = array[i];
+            array[i] = min;
+        }
+        return array;
 
     }
     
@@ -34,7 +59,13 @@ public class Exercise15SelectionSort {
      * @return un tableau contenant les k plus petits éléments
      */
     public int[] findKSmallest(int[] array, int k) {
-        throw new UnsupportedOperationException();
+        int[] arrayOfK = new int[k];
+        selectionSort(array);
+        for (int y = 0; y < k ; y++) {
+            arrayOfK[y] = array[y];
+        }
+
+        return arrayOfK;
 
     }
     
@@ -44,7 +75,22 @@ public class Exercise15SelectionSort {
      * @return le nombre de comparaisons
      */
     public int countComparisons(int[] array) {
-        throw new UnsupportedOperationException();
+        int count = 0;
+        for (int i = 0; i < array.length - 1; i++)
+        {
+            int index = i;
+            for (int j = i + 1; j < array.length; j++)
+            {
+                if (array[j] > array[index]){
+                    index = j;
+                    count ++;
+                }
+            }
+            int min = array[index];
+            array[index] = array[i];
+            array[i] = min;
+        }
+        return count;
 
     }
 }
